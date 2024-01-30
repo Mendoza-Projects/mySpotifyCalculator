@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Payout Calculator</title>
+
+    <!-- Custom font files are located in the 'fonts' directory -->
+    <style>
+        @font-face {
+            font-family: 'YourFont-Regular';
+            src: url('fonts/YourFont-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'YourFont-Bold';
+            src: url('fonts/YourFont-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'YourFont-Regular', sans-serif;
+            background: linear-gradient(to bottom, #0A5C36, #1D2E28);
+            background-size: 100% 100vh;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            height: 100vh;
+        }
+
+        h2 {
+            font-family: 'YourFont-Bold', sans-serif;
+            color: #ffffff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        input {
+            width: 20%; /* Adjust width as needed */
+            padding: 10px; /* Adjust padding as needed */
+            margin: 0 auto; /* Center the input */
+            box-sizing: border-box;
+            border: 2px solid #ddd; /* Border color */
+            border-radius: 50px; /* Adjust border-radius for roundness */
+            outline: none; /* Remove default focus outline */
+            
+        }
+
+        button {
+            background-color: #1D2E28;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px; /* Match the input's border-radius */
+        }
+
+        button:hover {
+            background-color: #141414;
+        }
+
+        p {
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h2>Spotify Payout Calculator</h2>
+    <label for="streams">Number of Streams:</label>
+    <input type="text" id="streams" placeholder="Enter number of streams" oninput="formatNumberInput()" onkeydown="if(event.keyCode==13) calculatePayout()" required>
+    
+    <button onclick="calculatePayout()">Calculate Payout</button>
+    <p id="result"></p>
+
+    <script>
+        function formatNumberInput() {
+            var input = document.getElementById("streams");
+            // Remove non-numeric characters
+            var sanitizedValue = input.value.replace(/[^0-9]/g, '');
+            
+            // Format the value with commas and a space between zeros
+            var formattedValue = sanitizedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // Display the formatted value
+            input.value = formattedValue;
+        }
+
+        function calculatePayout() {
+            var streams = document.getElementById("streams").value.replace(/,/g, ''); // Remove commas for calculation
+            var payoutPerStream = 0.00437; // Replace this with the actual payout per stream value
+
+            if (!isNaN(streams) && streams >= 0) {
+                var totalPayout = streams * payoutPerStream;
+                var formattedPayout = totalPayout.toLocaleString('en-US', { maximumFractionDigits: 2 });
+
+                document.getElementById("result").innerHTML = "Total Payout: $" + formattedPayout;
+            } else {
+                document.getElementById("result").innerHTML = "Please enter a valid number of streams.";
+            }
+        }
+    </script>
+</body>
+</html>
