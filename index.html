@@ -2,35 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Payout Calculator</title>
 
-    <!-- Custom font files are located in the 'fonts' directory -->
+    <!-- Custom font files are located in the same folder as the index file -->
     <style>
         @font-face {
             font-family: 'YourFont-Regular';
-            src: url('fonts/YourFont-Regular.ttf') format('truetype');
+            src: url('Poppins-SemiBold.ttf');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'YourFont-Bold';
-            src: url('fonts/YourFont-Bold.ttf') format('truetype');
+            src: url('Vermin Vibes Slant.ttf');
             font-weight: bold;
             font-style: normal;
         }
 
         body {
             font-family: 'YourFont-Regular', sans-serif;
-            background: linear-gradient(to bottom, #8b0000, #0e0000);
-            background-size: 100% 100vh;
             color: #fff;
             text-align: center;
             padding: 20px;
             margin: 0;
             height: 100vh;
+            background: radial-gradient(circle at center top, #d00000 0%, rgba(15, 17, 19, 1) 60%);
         }
 
         h2 {
@@ -45,18 +43,20 @@
         }
 
         input {
-            width: 35%; /* Adjust width as needed */
+            width: 70%; /* Adjust width as needed */
             padding: 10px; /* Adjust padding as needed */
             margin: 0 auto; /* Center the input */
             box-sizing: border-box;
             border: 2px solid #ddd; /* Border color */
             border-radius: 50px; /* Adjust border-radius for roundness */
             outline: none; /* Remove default focus outline */
-            
+            background: rgba(0,0,0,0.5); /* Background color */
+            color: #fff; /* Text color */
+            font-family: 'YourFont-Regular', sans-serif; /* Apply custom font */
         }
 
         button {
-            background-color: #0e0000;
+            background-color: #1D2E28;
             color: #fff;
             padding: 10px;
             border: none;
@@ -72,7 +72,13 @@
             color: #ffffff;
             font-weight: bold;
             margin-top: 10px;
-            
+        }
+
+        @media screen and (max-width: 600px) {
+            /* Adjust radial gradient for smaller screens */
+            body {
+                background: radial-gradient(circle at center top, #d00000 0%, rgba(15, 17, 19, 1) 60%);
+            }
         }
     </style>
 </head>
